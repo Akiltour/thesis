@@ -8,6 +8,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 from sklearn import metrics
 
 dataset = pd.read_csv('finish_noise.csv',sep=';')
@@ -34,10 +35,10 @@ noised = 0
 for i in range(len(X)):
 	for j in range(len(X[i])):
 		num = random.randint(1, 10)
-		if num <= 5:
+		if num <= 3:
 			noised += 1
-			#mu, sigma = 0, 0.1 
-			#noise = np.random.normal(mu, sigma, [1])
+			mu, sigma = 0, 0.1 
+			noise = np.random.normal(mu, sigma, [1])
 			#print(X[i][j])
 			#X[i][j] = X[i][j] + noise
 			X[i][j] = 0
@@ -70,7 +71,7 @@ plt.xlabel('True age')
 plt.ylabel('Predicted age')  
 plt.show()
 
-
+print('R²:', r2_score(y_test, y_pred))
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
