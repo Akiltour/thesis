@@ -13,13 +13,9 @@ from sklearn import metrics
 
 dataset = pd.read_csv('finish_noise.csv',sep=';')
 
-#print(dataset_test.shape)
-#print(dataset_test.describe())
-#print(dataset_test.isnull().any())
-
 print(dataset.shape)
 print(dataset.describe())
-#print(dataset.isnull().any())
+print(dataset.isnull().any())
 
 X = dataset[['cg09809672', 'cg22736354', 'cg02228185', 'cg01820374', 'cg06493994', 'cg19761273']].values
 y = dataset['Age'].values
@@ -30,6 +26,8 @@ params = {'n_estimators': 200,
           'criterion': 'mse'}
 
 #noise
+
+"""
 total = 0
 noised = 0
 for i in range(len(X)):
@@ -49,6 +47,7 @@ for i in range(len(X)):
 
 #print("noised :  ",noised)
 #print("total : ", total)
+"""
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=0)
 regressor = ensemble.GradientBoostingRegressor(**params)
