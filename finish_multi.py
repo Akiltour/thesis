@@ -10,25 +10,15 @@ from sklearn import metrics
 
 
 dataset = pd.read_csv('finish_noise.csv',sep=';')
-#dataset_test = pd.read_csv('test_rows_labels.csv',sep=';')
-
-#noise
-#mu, sigma = 0, 0.1 
-#noise = np.random.normal(mu, sigma, [1307,7])
-#dataset = dataset + noise
-
-#print(dataset_test.shape)
-#print(dataset_test.describe())
-#print(dataset_test.isnull().any())
 
 print(dataset.shape)
 print(dataset.describe())
-#print(dataset.isnull().any())
+print(dataset.isnull().any())
 
 X = dataset[['cg09809672', 'cg22736354', 'cg02228185', 'cg01820374', 'cg06493994', 'cg19761273']].values
 y = dataset['Age'].values
 
-
+"""
 #noise
 total = 0
 noised = 0
@@ -50,15 +40,11 @@ for i in range(len(X)):
 #print("noised :  ",noised)
 #print("total : ", total)
 
-
+"""
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=0)
 regressor = LinearRegression()  
 regressor.fit(X_train, y_train)
-"""
-coeff_df = pd.DataFrame(regressor.coef_,  columns=['Coefficient'])  
-print(coeff_df)
-"""
 print(regressor.coef_)
 
 y_pred = regressor.predict(X_test)
@@ -80,6 +66,7 @@ print('R²:', r2_score(y_test, y_pred))
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
 
 
 
