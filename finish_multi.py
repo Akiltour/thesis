@@ -80,34 +80,6 @@ print('R²:', r2_score(y_test, y_pred))
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
-"""
-#coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])  
-#print(coeff_df)
-
-y_pred = regressor.predict(X_test)
-df = pd.DataFrame({'True age': y_test, 'Predicted age': y_pred})
-df1 = df.head(104)
-print(df1)
-
-#df1.plot(kind='bar',figsize=(10,8))
-#plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
-#plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-#plt.show()
-
-df1.plot(x='True age', y='Predicted age', style='o')  
-x = np.linspace(10,70,60)
-y = x
-plt.plot(x, y, '-r', label='y=x')
-plt.title('True age vs Predicted age')  
-plt.xlabel('True age')  
-plt.ylabel('Predicted age')  
-plt.show()
-
-
-print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
-print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
-print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
-"""
 
 
 
